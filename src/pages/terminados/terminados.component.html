@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Pendientes</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding >
+
+      <ion-grid *ngIf="(_listaDeseosService.listas | filtroListas:true).length === 0" class="caja-vacia">
+          <ion-row>
+            <ion-col class="text-center caja-vacia">
+              <ion-icon class="icono-grande" name="book"></ion-icon>
+              <p>No hay ninguna lista</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>  
+
+   <ion-card  *ngFor="let lista of _listaDeseosService.listas | filtroListas:true; let i=index">
+
+     <ion-item color="danger" 
+     (click)="verDetalle(lista,i)">
+       <h2>{{lista.nombre}}</h2>
+       <ion-note item-right>
+         {{lista.items.length}}
+         items
+       </ion-note>
+     </ion-item>
+     
+     <ion-list>
+
+       <ion-item 
+       (click)="verDetalle(lista,i)"
+       *ngFor="let item of lista.items | slice:0:2" >
+         <ion-icon *ngIf="!item.completado" name="square-outline" item-right></ion-icon>
+         <ion-icon *ngIf="item.completado" name="ios-checkbox-outline" item-right></ion-icon>            
+         {{item.nombre}}
+       </ion-item>
+
+       <ion-item *ngIf="lista.items.length>2">
+           <ion-icon name="arrow-down"></ion-icon>
+       </ion-item>
+
+     </ion-list>
+     
+   </ion-card>
+  
+  </ion-content>
+  

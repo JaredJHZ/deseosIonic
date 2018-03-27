@@ -22,7 +22,19 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+.caja-vacia{
+  color: #C7C7C7;
+  margin-top:10%;
+}
+.caja-vacia p{
+  font-size: 30px;
+}
+.icono-grande{
+  font-size: 100px;
+}
+.text-center{
+  text-align: center;
+}
 
 
 // Named Color Variables
